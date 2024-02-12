@@ -7,6 +7,9 @@ const api = express();
 
 api.use(cors());
 api.use(express.json());
+
+api.use("/users", userRouter);
+
 api.get("/", (req, res) => {
     res.json({
         name: "Florin Connect",
@@ -14,6 +17,5 @@ api.get("/", (req, res) => {
     })
 })
 
-api.use("/users", userRouter);
 
 module.exports = api;

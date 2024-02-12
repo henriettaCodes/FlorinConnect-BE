@@ -1,7 +1,7 @@
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt')
 
-const User = require('../models/User');
-const Token = require('../models/Token');
+const User = require('../models/User')
+const Token = require('../models/Token')
 
 async function register (req, res) {
     const data = req.body;
@@ -23,7 +23,7 @@ async function login (req, res) {
         if(!authenticated){
             throw new Error("Incorrect details")
         }else{
-            const token = await Token.create(user['id'])
+            const token = await Token.create(user['account_id'])
             res.status(200).json({authenticated: true, token: token.token})
         }
     } catch(e) {

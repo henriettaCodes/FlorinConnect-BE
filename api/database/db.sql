@@ -1,13 +1,15 @@
 DROP TABLE IF EXISTS reply;
 DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS "user";
+DROP TABLE IF EXISTS token;
+DROP TABLE IF EXISTS account;
 
 CREATE TABLE account (
     account_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(20),
     password CHAR(60),
     isAdmin BOOLEAN,
-    PRIMARY KEY (account_id)
+    PRIMARY KEY (account_id),
+    UNIQUE (username)
 );
 
 CREATE TABLE post (
@@ -38,4 +40,18 @@ CREATE TABLE token (
     token CHAR(36) UNIQUE NOT NULL,
     PRIMARY KEY (token_id),
     FOREIGN KEY (account_id) REFERENCES account(account_id)
+);
+
+INSERT INTO account(username, password, isAdmin) VALUES (
+    'test',
+    'pass',
+    true
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    1,
+    'test',
+    'test',
+    'test',
+    CURRENT_TIMESTAMP
 );
