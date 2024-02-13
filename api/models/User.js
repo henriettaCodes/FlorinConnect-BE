@@ -20,7 +20,7 @@ class User {
     static async getOneByUsername(username) {
         const response = await db.query("SELECT * FROM account WHERE username = $1", [username]);
         if (response.rows.length != 1) {
-            throw new Error("Unable to locate user.");
+            return new Error("Unable to locate user.");
         }
         return new User(response.rows[0]);
     }
@@ -29,7 +29,7 @@ class User {
         const { username, password, isAdmin } = data;
         const availabilityCheck = await db.query("SELECT * FROM account WHERE username = $1", [username])
         if(availabilityCheck.rows.length != 0){
-            throw new Error("Username already taken.")
+            return new Error("Username already taken.")
         }
         const response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",
             [username, password, isAdmin]);
