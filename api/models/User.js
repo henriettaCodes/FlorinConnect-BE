@@ -31,7 +31,7 @@ class User {
         if(availabilityCheck.rows.length != 0){
             throw new Error("Username already taken.")
         }
-        let response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",
+        const response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",
             [username, password, isAdmin]);
         const newId = response.rows[0].account_id;
         const newUser = await User.getOneById(newId);
