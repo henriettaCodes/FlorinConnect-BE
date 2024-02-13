@@ -31,6 +31,17 @@ async function login (req, res) {
     }
 }
 
+async function getAccountByToken (req, res) {
+    const data = req.params.token
+    const token = await Token.getOneByToken(data)
+    try{
+        const user = await Token.getAccountByToken(token)
+        res.status(200).json(user)
+    } catch(e) {
+        res.status(404).json({error: e.message})
+    }
+}
+
 module.exports = {
-    register, login
+    register, login, getAccountByToken
 }

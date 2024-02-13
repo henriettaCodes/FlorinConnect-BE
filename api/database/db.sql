@@ -7,7 +7,7 @@ CREATE TABLE account (
     account_id INT GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(20),
     password CHAR(60),
-    isAdmin BOOLEAN,
+    is_admin BOOLEAN,
     PRIMARY KEY (account_id),
     UNIQUE (username)
 );
@@ -42,7 +42,7 @@ CREATE TABLE token (
     FOREIGN KEY (account_id) REFERENCES account(account_id)
 );
 
-INSERT INTO account(username, password, isAdmin) VALUES (
+INSERT INTO account(username, password, is_admin) VALUES (
     'test',
     'pass',
     true

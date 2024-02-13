@@ -1,6 +1,7 @@
 const { v4: uuidv4 } = require("uuid");
 
 const db = require("../database/connect");
+const User = require("./User")
 
 class Token {
 
@@ -33,6 +34,15 @@ class Token {
             throw new Error("Unable to locate token.");
         } else {
             return new Token(response.rows[0]);
+        }
+    }
+
+    static async getAccountByToken(token) {
+        const response = await db.query("SELECT username, account_id, is_admin FROM account WHERE account_id = $1", [token.account_id])
+        if (response.rows.length != 1){
+            throw new Error("Unable to locate username.")
+        }else{
+            return new User(response.rows[0])
         }
     }
 }
