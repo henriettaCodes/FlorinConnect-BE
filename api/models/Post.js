@@ -28,6 +28,12 @@ class Post {
         }
         return response.rows.map(p => new Post(p))
     }
+
+    static async getPostById(data) {
+        const id = data
+        const response = await db.query("SELECT post.post_id, post.category, post.title, post.content, post.date_posted, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id WHERE post_id = $1;", [id])
+        return new Post(response.rows[0])
+    }
 }
 
 module.exports = Post
