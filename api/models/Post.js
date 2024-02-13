@@ -13,7 +13,11 @@ class Post {
 
     static async create(data){
         const { account_id, category, title, content } = data
+        if(!account_id || !category || !title || !content){
+            throw new Error("Data is missing.")
+        }
         const response = await db.query("INSERT INTO post (account_id, category, title, content, date_posted) VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP) RETURNING *;",[account_id, category, title, content])
+        if(response)
         return new Post(response.rows[0])
     }
 
@@ -46,6 +50,9 @@ class Post {
     static async getPostById(data) {
         const id = data
         const response = await db.query("SELECT post.*, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id WHERE post_id = $1;", [id])
+        if(response.rows.length === 0){
+            throw new Error("No post found with that ID.")
+        }
         return new Post(response.rows[0])
     }
 
