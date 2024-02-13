@@ -1,5 +1,14 @@
 const Post = require('../models/Post')
 
+async function create(req, res){
+    const data = req.body
+    try {
+        const response = await Post.create(data)
+        res.status(200).json(response)
+    } catch (e) {
+        res.status(500).json({error: e.message})
+    }
+}
 async function getAllPosts(req, res){
     try {
         const response = await Post.getAllPosts()
@@ -38,4 +47,4 @@ async function getPostById(req, res){
     }
 }
 
-module.exports = { getAllPosts, searchPostsByContent, searchPostsByCategory, getPostById }
+module.exports = { create, getAllPosts, searchPostsByContent, searchPostsByCategory, getPostById }

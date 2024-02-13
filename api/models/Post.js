@@ -11,6 +11,12 @@ class Post {
         this.author_username = author_username
     }
 
+    static async create(data){
+        const { account_id, category, title, content } = data
+        const response = await db.query("INSERT INTO post (account_id, category, title, content, date_posted) VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP) RETURNING *;",[account_id, category, title, content])
+        return new Post(response.rows[0])
+    }
+
     static async getAllPosts() {
         const response = await db.query("SELECT post.*, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id")
         if(response.rows.length === 0){

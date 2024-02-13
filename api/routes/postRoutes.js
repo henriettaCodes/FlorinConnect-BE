@@ -4,6 +4,7 @@ const postController = require('../controllers/postController.js');
 
 const postRouter = Router();
 
+postRouter.post("/",postController.create)
 postRouter.get("/search", postController.getAllPosts)
 postRouter.get("/search/:search", postController.searchPostsByContent)
 postRouter.get("/category/:category", postController.searchPostsByCategory)
