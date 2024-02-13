@@ -1,21 +1,24 @@
 const db = require('../database/connect.js')
 
 class Post {
-    constructor({ post_id, account_id, category, title, content, date_posted }) {
+    constructor({ post_id, account_id, category, title, content, date_posted, author_username }) {
         this.post_id = post_id
         this.account_id = account_id
         this.category = category
         this.title = title
         this.content = content
         this.date_posted = date_posted
+        this.author_username = author_username
     }
 
     static async getPostByContent(data) {
         const searchString = data;
-        await db.query("SELECT * from post WHERE content LIKE '%$1%' OR title LIKE '%$1%';", searchString)
+        const response = await db.query("SELECT post.post_id, post.category, post.title, post.content, post.date_posted, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id WHERE post.content LIKE '%' || $1 || '%' OR post.title LIKE '%' || $1 || '%';", [searchString])
         if(response.rows.length === 0){
             throw new Error("No posts found matching your search.")
         }
         return response.rows.map(p => new Post(p))
     }
 }
+
+module.exports = Post

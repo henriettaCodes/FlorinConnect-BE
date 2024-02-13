@@ -42,6 +42,4 @@ async function getAccountByToken (req, res) {
     }
 }
 
-module.exports = {
-    register, login, getAccountByToken
-}
+module.exports = { register, login, getAccountByToken }

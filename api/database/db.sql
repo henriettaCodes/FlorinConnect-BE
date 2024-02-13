@@ -55,3 +55,11 @@ INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
     'test',
     CURRENT_TIMESTAMP
 );
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    1,
+    'test',
+    'test2',
+    'test2',
+    CURRENT_TIMESTAMP
+);

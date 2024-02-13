@@ -1,15 +1,17 @@
-const express = require('express');
-const cors = require('cors');
+const express = require('express')
+const cors = require('cors')
 
-const userRouter = require('./routes/userRoutes');
-const logRoutes = require('./middleware/logger');
+const userRouter = require('./routes/userRoutes')
+const postRouter = require('./routes/postRoutes')
+const logRoutes = require('./middleware/logger')
 
-const api = express();
+const api = express()
 
-api.use(cors());
-api.use(express.json());
+api.use(cors())
+api.use(express.json())
 
-api.use("/users", userRouter);
+api.use("/users", userRouter)
+api.use("/posts", postRouter)
 api.use(logRoutes)
 
 api.get("/", (req, res) => {
@@ -20,4 +22,4 @@ api.get("/", (req, res) => {
 })
 
 
-module.exports = api;
+module.exports = api
