@@ -4,12 +4,32 @@ async function create(req, res){
     const post = req.params.id
     const data = req.body
     try {
-        const reply = await Reply.create(post, data)
-        res.status(200).json(reply)
+        const response = await Reply.create(post, data)
+        res.status(200).json(response)
     } catch (e) {
         res.status(500).json({error: e.message})
     }
     
 }
 
-module.exports = { create }
+async function getRepliesByPostId(req, res){
+    const post = req.params.id
+    try {
+        const response = await Reply.getRepliesByPostId(post)
+        res.status(200).json(response)
+    } catch (e) {
+        res.status(404).json({error: e.message})
+    }
+}
+
+async function getReplyById(req, res){
+    const id = req.params.id
+    try {
+        const response = await Reply.getReplyById(id)
+        res.status(200).json(response)
+    } catch (e) {
+        res.status(404).json({error: e.message})
+    }
+}
+
+module.exports = { create, getRepliesByPostId, getReplyById }

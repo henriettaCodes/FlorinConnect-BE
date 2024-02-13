@@ -47,4 +47,15 @@ async function getPostById(req, res){
     }
 }
 
-module.exports = { create, getAllPosts, searchPostsByContent, searchPostsByCategory, getPostById }
+async function deletePostById(req, res){
+    const post_id = req.params.id
+    try{
+        const post = await Post.getPostById(post_id)
+        const response = await post.deletePostById()
+        res.status(200).json(response)
+    } catch (e) {
+        res.status(500).json({error: e.message})
+    }
+}
+
+module.exports = { create, getAllPosts, searchPostsByContent, searchPostsByCategory, getPostById, deletePostById }

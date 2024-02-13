@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --watchAll --detectOpenHandles",
     "setup-db": "node ./database/setup.js",
-    "dev": "nodemon index.js",
+    "dev": "nodemon --trace-warnings index.js",
     "start": "node index.js",
     "coverage": "jest --coverage"
   },
