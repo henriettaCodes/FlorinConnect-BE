@@ -34,6 +34,14 @@ class Reply {
         }
         return new Reply(response.rows[0])
     }
+
+    async deleteReplyById(){
+        const response = await db.query("DELETE FROM reply WHERE reply_id = $1 RETURNING *;", [this.reply_id])
+        if(response.rows.length === 0){
+            throw new Error("Could not find reply to delete.")
+        }
+        return new Reply(response.rows[0])
+    }
 }
 
 module.exports = Reply
