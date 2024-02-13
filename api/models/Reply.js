@@ -14,7 +14,6 @@ class Reply {
         const post_id = post
         const { account_id, content } = data
         const response = await db.query("INSERT INTO reply (post_id, account_id, content, date_posted) VALUES ($1, $2, $3, CURRENT_TIMESTAMP) RETURNING *;", [post_id, account_id, content])
-        console.log(response)
         return new Reply(response.rows[0])
     }
 }

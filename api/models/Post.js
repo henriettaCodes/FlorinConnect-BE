@@ -11,6 +11,14 @@ class Post {
         this.author_username = author_username
     }
 
+    static async getAllPosts() {
+        const response = await db.query("SELECT post.*, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id")
+        if(response.rows.length === 0){
+            return new Error("No posts found.")
+        }
+        return response.rows.map(p => new Post(p))
+    }
+
     static async getPostByContent(data) {
         const searchString = data
         const response = await db.query("SELECT post.*, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id WHERE post.content LIKE '%' || $1 || '%' OR post.title LIKE '%' || $1 || '%';", [searchString])
