@@ -48,6 +48,12 @@ INSERT INTO account(username, password, is_admin) VALUES (
     true
 );
 
+INSERT INTO account(username, password, is_admin) VALUES (
+    'test2',
+    'pass',
+    false
+);
+
 INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
     1,
     'test',
@@ -61,5 +67,53 @@ INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
     'test',
     'test2',
     'test2',
+    CURRENT_TIMESTAMP
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    1,
+    'event',
+    'Formal Dance',
+    'This years community ball will take place on May 18th at the village hall!',
+    CURRENT_TIMESTAMP
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    2,
+    'event',
+    'Choir service',
+    'Tomorrow night (14th Feb) is our valentine day choir service at the church',
+    CURRENT_TIMESTAMP
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    1,
+    'job',
+    'Graduate Cleaner with chance at promotion',
+    'Looking for graduates to clean our garage. 2:1 minimum in a STEM subject. Text 072324454 for more details...',
+    CURRENT_TIMESTAMP
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    1,
+    'job',
+    'Hit Man wanted',
+    'Looking for an agent. you know how to contact me...',
+    CURRENT_TIMESTAMP
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    2,
+    'volunteering',
+    'Help needed at surgery',
+    'Doctors needed for brain transplant. No experience required, just a can do attitude',
+    CURRENT_TIMESTAMP
+);
+
+INSERT INTO post (account_id, category, title, content, date_posted) VALUES (
+    2,
+    'volunteering',
+    'Coach needed for premier league side',
+    'Need someone to win us games. contact us in person at the ground',
     CURRENT_TIMESTAMP
 );
