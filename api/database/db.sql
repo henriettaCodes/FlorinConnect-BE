@@ -30,7 +30,7 @@ CREATE TABLE reply (
     content VARCHAR(300),
     date_posted TIMESTAMP,
     PRIMARY KEY (reply_id),
-    FOREIGN KEY (post_id) REFERENCES post(post_id),
+    FOREIGN KEY (post_id) REFERENCES post(post_id) ON DELETE CASCADE,
     FOREIGN KEY (account_id) REFERENCES account(account_id)
 );
 

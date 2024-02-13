@@ -35,6 +35,12 @@ class Reply {
         return new Reply(response.rows[0])
     }
 
+    async updateReply(data){
+        const content = data
+        const response = await db.query("UPDATE reply SET content = $1 WHERE reply_id = $2 RETURNING *;",[content, this.reply_id])
+        return new Reply(response.rows[0])
+    }
+
     async deleteReplyById(){
         const response = await db.query("DELETE FROM reply WHERE reply_id = $1 RETURNING *;", [this.reply_id])
         if(response.rows.length === 0){

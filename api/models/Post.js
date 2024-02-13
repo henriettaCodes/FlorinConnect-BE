@@ -49,6 +49,12 @@ class Post {
         return new Post(response.rows[0])
     }
 
+    async updatePost(data){
+        const { category, title, content } = data
+        const response = await db.query("UPDATE post SET category = $1, title = $2, content = $3 WHERE post_id = $4 RETURNING *;",[category, title, content, this.post_id])
+        return new Post(response.rows[0])
+    }
+
     async deletePostById(){
         const response = await db.query("DELETE FROM post WHERE post_id = $1 RETURNING *;", [this.post_id])
         if(response.rows.length === 0){

@@ -47,6 +47,18 @@ async function getPostById(req, res){
     }
 }
 
+async function updatePostById(req, res){
+    const data = req.body
+    const post_id = req.params.id
+    try {
+        const post = await Post.getPostById(post_id)
+        const response = await post.updatePost(data)
+        res.status(200).json(response)
+    } catch (e) {
+        res.status(500).json({error: e.message})        
+    }
+}
+
 async function deletePostById(req, res){
     const post_id = req.params.id
     try{
@@ -58,4 +70,4 @@ async function deletePostById(req, res){
     }
 }
 
-module.exports = { create, getAllPosts, searchPostsByContent, searchPostsByCategory, getPostById, deletePostById }
+module.exports = { create, getAllPosts, searchPostsByContent, searchPostsByCategory, getPostById, updatePostById, deletePostById }
