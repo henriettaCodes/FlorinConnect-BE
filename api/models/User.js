@@ -27,15 +27,11 @@ class User {
 
     static async create(data) {
         const { username, password, isAdmin } = data;
-        const availabilityCheck = await db.query("SELECT * FROM account WHERE username = $1", [username])
-        if (availabilityCheck.rows.length != 0) {
-            return new Error("Username already taken.")
+        if(!username || !password || !isAdmin){
+            throw new Error("Data is missing.")
         }
-        const response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",
-            [username, password, isAdmin]);
-        const newId = response.rows[0].account_id;
-        const newUser = await User.getOneById(newId);
-        return newUser;
+        const response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",[username, password, isAdmin]);
+        return(response.rows[0])
     }
 }
 

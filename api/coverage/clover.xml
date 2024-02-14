@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707843476101" clover="3.2.0">
-  <project timestamp="1707843476101" name="All files">
-    <metrics statements="44" coveredstatements="34" conditionals="16" coveredconditionals="13" methods="11" coveredmethods="8" elements="71" coveredelements="55" complexity="0" loc="44" ncloc="44" packages="2" files="2" classes="2"/>
+<coverage generated="1707905895115" clover="3.2.0">
+  <project timestamp="1707905895115" name="All files">
+    <metrics statements="70" coveredstatements="57" conditionals="29" coveredconditionals="23" methods="15" coveredmethods="13" elements="114" coveredelements="93" complexity="0" loc="70" ncloc="70" packages="2" files="3" classes="3"/>
     <package name="database">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="connect.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\database\connect.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
       </file>
     </package>
     <package name="models">
-      <metrics statements="41" coveredstatements="31" conditionals="16" coveredconditionals="13" methods="11" coveredmethods="8"/>
+      <metrics statements="67" coveredstatements="54" conditionals="29" coveredconditionals="23" methods="15" coveredmethods="13"/>
       <file name="Post.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\models\Post.js">
-        <metrics statements="41" coveredstatements="31" conditionals="16" coveredconditionals="13" methods="11" coveredmethods="8"/>
+        <metrics statements="45" coveredstatements="44" conditionals="23" coveredconditionals="21" methods="11" coveredmethods="11"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="5" count="7" type="stmt"/>
-        <line num="6" count="7" type="stmt"/>
-        <line num="7" count="7" type="stmt"/>
-        <line num="8" count="7" type="stmt"/>
-        <line num="9" count="7" type="stmt"/>
-        <line num="10" count="7" type="stmt"/>
-        <line num="11" count="7" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="6" count="14" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+        <line num="8" count="14" type="stmt"/>
+        <line num="9" count="14" type="stmt"/>
+        <line num="10" count="14" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="cond" truecount="6" falsecount="0"/>
         <line num="17" count="1" type="stmt"/>
@@ -40,22 +40,51 @@
         <line num="38" count="2" type="stmt"/>
         <line num="42" count="2" type="stmt"/>
         <line num="43" count="2" type="stmt"/>
-        <line num="44" count="2" type="stmt"/>
-        <line num="45" count="2" type="stmt"/>
-        <line num="46" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="55" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="60" count="0" type="stmt"/>
-        <line num="61" count="0" type="stmt"/>
-        <line num="65" count="0" type="stmt"/>
-        <line num="66" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="73" count="1" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="53" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="2" type="cond" truecount="5" falsecount="0"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="69" count="2" type="stmt"/>
+        <line num="70" count="2" type="stmt"/>
+        <line num="71" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="81" count="1" type="stmt"/>
+      </file>
+      <file name="User.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\models\User.js">
+        <metrics statements="22" coveredstatements="10" conditionals="6" coveredconditionals="2" methods="4" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
       </file>
     </package>
   </project>

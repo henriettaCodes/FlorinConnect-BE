@@ -7,7 +7,7 @@ describe("Post", () => {
     afterAll(() => jest.resetAllMocks())
 
     describe("create", () => {
-        it("Adds a new entry to the test database", async () => {
+        it("Adds a new entry to the post table", async () => {
             let postData = { account_id: 1, category: "test", title: "test", content: "test" }
             jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ ...postData, post_id: 1 }] })
 
@@ -87,7 +87,6 @@ describe("Post", () => {
         it("Returns the post with the matching ID", async () => {
             jest.spyOn(db, 'query').mockResolvedValueOnce({rows: [{ post_id: 1, category: 'animal', title: 'cat', content: 'dog' }]})
             const post = await Post.getPostById(1)
-            console.log(post)
             expect(post).toHaveProperty('post_id')
         })
         it("Errors out if there aren't any posts", async () => {
@@ -98,6 +97,52 @@ describe("Post", () => {
                 expect(error).toBeTruthy()
                 expect(error.message).toBe('No post found with that ID.')
             }
+        })
+    })
+
+    describe("updatePost", () => {
+        it("Updates a post with new data", async () => {
+            const post = new Post({ category: 'dog', title: 'bark', content: 'woof' })
+            jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ post_id: 1, category: 'test', title: 'test', content: 'test' }] })
+
+            const result = await post.updatePost({ category: 'test', title: 'test', content: 'test' })
+
+            expect(result).toBeInstanceOf(Post)
+            expect(result.post_id).toBe(1)
+            expect(result.title).toBe('test')
+            expect(result).not.toEqual(post)
+        })
+        it('Errors out if update data is missing', async () => {
+            try {
+              const post = new Post({ category: 'test', title: 'test', content: 'test' })
+              await post.updatePost({ title: 'test' });
+            } catch (error) {
+              expect(error).toBeTruthy()
+              expect(error.message).toBe('Data is missing.')
+            }
+        })
+    })
+    describe ('deletePostById', () => {
+        it('Returns the deleted post', async () => {
+          const post = new Post({})
+          jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ post_id: 1, category: 'test', title: 'test', content: 'test' }] })
+    
+          const result = await post.deletePostById(1)
+
+          expect(result).toBeInstanceOf(Post)
+          expect(result.post_id).toBe(1)
+          expect(result).not.toEqual(post)
+        })
+    
+        it('Errors out if deletion is unsuccessful', async () => {
+          jest.spyOn(db, 'query').mockRejectedValue()
+          try {
+            const post = new Post({category: 'test', title: 'test', content: 'test' })
+            await post.deletePostById(1)
+          } catch (error) {
+            expect(error).toBeTruthy()
+            expect(error.message).toContain('Could not delete post.')
+          }
         })
     })
 })
