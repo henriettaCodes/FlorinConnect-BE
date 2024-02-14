@@ -13,6 +13,9 @@ class Reply {
     static async create(post, data){
         const post_id = post
         const { account_id, content } = data
+        if(!account_id || !content){
+            throw new Error("Data is missing.")
+        }
         const response = await db.query("INSERT INTO reply (post_id, account_id, content, date_posted) VALUES ($1, $2, $3, CURRENT_TIMESTAMP) RETURNING *;", [post_id, account_id, content])
         return new Reply(response.rows[0])
     }
@@ -37,16 +40,20 @@ class Reply {
 
     async updateReply(data){
         const content = data
+        if(!content){
+            throw new Error("Data is missing.")
+        }
         const response = await db.query("UPDATE reply SET content = $1 WHERE reply_id = $2 RETURNING *;",[content, this.reply_id])
         return new Reply(response.rows[0])
     }
 
     async deleteReplyById(){
-        const response = await db.query("DELETE FROM reply WHERE reply_id = $1 RETURNING *;", [this.reply_id])
-        if(response.rows.length === 0){
-            throw new Error("Could not find reply to delete.")
+        try {
+            const response = await db.query("DELETE FROM reply WHERE reply_id = $1 RETURNING *;", [this.reply_id])
+            return new Reply(response.rows[0])
+        } catch (error) {
+            throw new Error("Could not delete reply.")
         }
-        return new Reply(response.rows[0])
     }
 }
 

@@ -27,7 +27,7 @@ class User {
 
     static async create(data) {
         const { username, password, isAdmin } = data;
-        if(!username || !password || !isAdmin){
+        if(!username || !password || isAdmin === null){
             throw new Error("Data is missing.")
         }
         const response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",[username, password, isAdmin]);

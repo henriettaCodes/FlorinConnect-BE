@@ -2,6 +2,11 @@ const User = require('../../../models/User')
 const db = require('../../../database/connect')
 
 describe("User", () => {
+
+    beforeEach(() => jest.clearAllMocks())
+
+    afterAll(() => jest.resetAllMocks())
+    
     describe("getOneById", () => {
         it("Returns the user with the matching ID", async () => {
             jest.spyOn(db, 'query').mockResolvedValueOnce({rows: [{ account_id: 1, username: 'test', password: 'test' }]})
