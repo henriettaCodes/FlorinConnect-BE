@@ -30,6 +30,10 @@ class User {
         if(!username || !password || isAdmin === null){
             throw new Error("Data is missing.")
         }
+        const usernameTaken = await db.query("SELECT * FROM account WHERE LOWER(username) = LOWER($1)", [username])
+        if (usernameTaken.rows != 0){
+            throw new Error("Username taken.")
+        }
         const response = await db.query("INSERT INTO account (username, password, is_admin) VALUES ($1, $2, $3) RETURNING *;",[username, password, isAdmin]);
         return(response.rows[0])
     }
