@@ -1,28 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1707912038022" clover="3.2.0">
-  <project timestamp="1707912038022" name="All files">
-    <metrics statements="100" coveredstatements="98" conditionals="42" coveredconditionals="39" methods="22" coveredmethods="22" elements="164" coveredelements="159" complexity="0" loc="100" ncloc="100" packages="2" files="4" classes="4"/>
+<coverage generated="1707929611071" clover="3.2.0">
+  <project timestamp="1707929611071" name="All files">
+    <metrics statements="139" coveredstatements="130" conditionals="42" coveredconditionals="39" methods="29" coveredmethods="28" elements="210" coveredelements="197" complexity="0" loc="139" ncloc="139" packages="3" files="5" classes="5"/>
+    <package name="controllers">
+      <metrics statements="39" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6"/>
+      <file name="postController.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\controllers\postController.js">
+        <metrics statements="39" coveredstatements="32" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+        <line num="43" count="2" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="database">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="connect.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\database\connect.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
       </file>
     </package>
     <package name="models">
       <metrics statements="97" coveredstatements="95" conditionals="42" coveredconditionals="39" methods="22" coveredmethods="22"/>
       <file name="Post.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\models\Post.js">
         <metrics statements="45" coveredstatements="44" conditionals="23" coveredconditionals="21" methods="11" coveredmethods="11"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="5" count="14" type="stmt"/>
-        <line num="6" count="14" type="stmt"/>
-        <line num="7" count="14" type="stmt"/>
-        <line num="8" count="14" type="stmt"/>
-        <line num="9" count="14" type="stmt"/>
-        <line num="10" count="14" type="stmt"/>
-        <line num="11" count="14" type="stmt"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="6" count="22" type="stmt"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="8" count="22" type="stmt"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="cond" truecount="6" falsecount="0"/>
         <line num="17" count="1" type="stmt"/>
@@ -59,7 +104,7 @@
         <line num="72" count="0" type="stmt"/>
         <line num="74" count="1" type="stmt"/>
         <line num="76" count="1" type="stmt"/>
-        <line num="81" count="1" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
       </file>
       <file name="Reply.js" path="C:\Users\Dexte\Desktop\guthrie\lap2\FlorinConnect-BE\api\models\Reply.js">
         <metrics statements="33" coveredstatements="32" conditionals="10" coveredconditionals="9" methods="7" coveredmethods="7"/>
