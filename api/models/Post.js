@@ -40,7 +40,7 @@ class Post {
 
     static async getPostByCategory(data) {
         const category = data
-        const response = await db.query("SELECT post.*, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id WHERE category = $1;", [category])
+        const response = await db.query("SELECT post.*, account.username AS author_username FROM post INNER JOIN account ON post.account_id = account.account_id WHERE LOWER(category) = LOWER($1);", [category])
         if(response.rows.length === 0){
             throw new Error("No posts found matching this category.")
         }
