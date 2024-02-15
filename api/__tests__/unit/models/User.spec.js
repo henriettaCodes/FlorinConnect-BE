@@ -42,7 +42,8 @@ describe("User", () => {
     describe("create", () => {
         it("Adds a new entry to the user table", async () => {
             let userData = { username: 'a', password: 'test', isAdmin: true }
-            jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ ...userData, account_id: 1 }] })
+            jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [] })
+            jest.spyOn(db, 'query').mockResolvedValueOnce({ rows: [{ ...userData, account_id: 1 }]})
 
             const result = await User.create(userData)
 
