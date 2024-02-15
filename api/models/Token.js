@@ -13,10 +13,11 @@ class Token {
 
     static async create(account_id) {
         const token = uuidv4()
-        const response = await db.query("INSERT INTO token (account_id, token) VALUES ($1, $2) RETURNING token_id;", [account_id, token])
-        const newId = response.rows[0].token_id
-        const newToken = await Token.getOneById(newId)
-        return newToken
+        if(!account_id){
+            throw new Error("Data is missing.")
+        }
+        const response = await db.query("INSERT INTO token (account_id, token) VALUES ($1, $2) RETURNING *;", [account_id, token])
+        return new Token(response.rows[0])
     }
 
     static async getOneById(id) {
