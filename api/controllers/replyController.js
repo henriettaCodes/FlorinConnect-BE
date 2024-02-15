@@ -49,7 +49,7 @@ async function deleteReplyById(req, res){
     try{
         const reply = await Reply.getReplyById(reply_id)
         const response = await reply.deleteReplyById()
-        res.status(200).json(response)
+        res.status(204).json(response)
     } catch (e) {
         res.status(500).json({error: e.message})
     }

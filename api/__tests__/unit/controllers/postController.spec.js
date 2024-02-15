@@ -138,11 +138,10 @@ describe("postController", () => {
     describe('destroy', () => {
         it('Returns destroyed entry', async () => {
             const testPost = { post_id: 1, account_id: 1, category: 'test', title: 'test', content: 'test' }
-            jest.spyOn(Post, 'getPostById')
-              .mockResolvedValue(new Post(testPost))
+            
+            jest.spyOn(Post, 'getPostById').mockResolvedValue(new Post(testPost))
       
-            jest.spyOn(Post.prototype, 'deletePostById')
-              .mockResolvedValue(new Post(testPost))
+            jest.spyOn(Post.prototype, 'deletePostById').mockResolvedValue(new Post(testPost))
       
             const mockReq = { params: { id: 1 } }
             

@@ -33,8 +33,8 @@ async function login (req, res) {
 
 async function getAccountByToken (req, res) {
     const data = req.params.token
-    const token = await Token.getOneByToken(data)
     try{
+        const token = await Token.getOneByToken(data)
         const user = await Token.getAccountByToken(token)
         res.status(200).json(user)
     } catch(e) {

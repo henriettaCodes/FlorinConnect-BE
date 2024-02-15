@@ -70,8 +70,29 @@ describe("userController", () => {
     })
 
     describe("getAccountByToken", () => {
-        it("Returns user data", async () => {
-            
+        it("Returns account", async () => {
+            const testToken = 'test'
+            const mockReq = { params: {token: testToken}}
+            jest.spyOn(Token, 'getOneByToken').mockResolvedValue({token: 'test'})
+            jest.spyOn(Token, 'getAccountByToken').mockResolvedValue({account_id: 1})
+
+            await userController.getAccountByToken(mockReq, mockRes)
+
+            expect(Token.getOneByToken).toHaveBeenCalledTimes(1)
+            expect(Token.getAccountByToken).toHaveBeenCalledTimes(1)
+            expect(mockStatus).toHaveBeenCalledWith(200)
+            expect(mockJson).toHaveBeenCalledWith({account_id: 1})
+        })
+        it("Throws an error", async () => {
+            const testToken = 'test'
+            const mockReq = { params: {token: testToken}}
+            jest.spyOn(Token, 'getOneByToken').mockRejectedValue(new Error("Token not recognized"))
+
+            await userController.getAccountByToken(mockReq, mockRes)
+      
+            expect(Token.getOneByToken).toHaveBeenCalledTimes(1)
+            expect(mockStatus).toHaveBeenCalledWith(404)
+            expect(mockJson).toHaveBeenCalledWith({error: "Token not recognized"})
         })
     })
 })
